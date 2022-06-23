@@ -26,5 +26,21 @@ public class OrderMenu {
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
+	private int orderPrice;
+	private int count;
+	
+	public static OrderMenu createOrderMenu(Menu menu, int orderPrice, int count) {
+		OrderMenu orderMenu = new OrderMenu();
+		
+		orderMenu.setMenu(menu);
+		orderMenu.setOrderPrice(orderPrice);
+		orderMenu.setCount(count);
+		
+		return orderMenu;
+	}
+	
+	public int getTotalPrice() {
+		return getOrderPrice() * getCount();
+	}
 
 }

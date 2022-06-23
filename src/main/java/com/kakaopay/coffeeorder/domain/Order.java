@@ -30,6 +30,20 @@ public class Order {
 	private Member member;
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-	private List<OrderMenu> orderItemList = new ArrayList<>();
+	private List<OrderMenu> orderMenuList = new ArrayList<>();
+	
+	public void addOrderMenu(OrderMenu orderMenu) {
+		orderMenuList.add(orderMenu);
+	}
+	
+	public static Order createOrder(Member member, OrderMenu... orderMenus) {
+		Order order = new Order();
+		order.setMember(member);
+		for(OrderMenu orderMenu : orderMenus) {
+			order.addOrderMenu(orderMenu);
+		}
+		
+		return order;
+	}
 
 }
