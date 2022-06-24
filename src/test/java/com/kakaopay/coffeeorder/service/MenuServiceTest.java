@@ -57,7 +57,6 @@ public class MenuServiceTest {
 	public void 인기메뉴조회() {
 
 		LocalDate now = LocalDate.now();
-		LocalDate weeksAgo = now.minusDays(7);
 
 		Menu menu1 = new Menu();
 		menu1.setName("testMenu1");
