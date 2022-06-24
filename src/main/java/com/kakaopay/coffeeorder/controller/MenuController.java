@@ -25,7 +25,7 @@ public class MenuController {
 		List<Menu> menus = menuService.findAllMenus();
 		
 		List<MenuDto> collect = menus.stream()
-				.map(m -> new MenuDto(m.getName(), m.getPrice()))
+				.map(m -> new MenuDto(m.getId(), m.getName(), m.getPrice()))
 				.collect(Collectors.toList());
 		
 		return new Result<List<MenuDto>>(collect);
@@ -40,6 +40,7 @@ public class MenuController {
 	@Data
 	@AllArgsConstructor
 	static class MenuDto {
+		private Long id;
 		private String name;
 		private int price;
 	}
