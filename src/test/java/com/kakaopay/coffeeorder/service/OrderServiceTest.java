@@ -59,10 +59,10 @@ public class OrderServiceTest {
 		int orderCount = 2;
 
 		// when
-		Long orderId = orderService.order(member.getId(), menu.getId(), orderCount);
+		Order createOrder = orderService.order(member.getId(), menu.getId(), orderCount);
 
 		// then
-		Order getOrder = orderRepository.findOne(orderId);
+		Order getOrder = orderRepository.findOne(createOrder.getId());
 		int orderAfterMenuCnt = dateOrderCountRepository.findByMenuAndDate(menu.getId(), LocalDate.now())
 				.getOrderCount();
 		

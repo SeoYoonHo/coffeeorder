@@ -26,7 +26,7 @@ public class OrderService {
 	private final DateOrderCountRepository dateOrderCountRepository;
 	
 	@Transactional
-	public Long order(Long memberId, Long menuId, int count) {
+	public Order order(Long memberId, Long menuId, int count) {
 		
 		//Entity 조회
 		Member member = memberRepository.findOne(memberId);
@@ -49,7 +49,7 @@ public class OrderService {
 		//주문 저장
 		orderRepository.save(order);
 		
-		return order.getId();
+		return order;
 	}
 
 }
