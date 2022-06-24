@@ -41,7 +41,7 @@ public class OrderService {
 		//날짜별 주문건수 생성
 		DateOrderCount dateOrderCount = dateOrderCountRepository.findByMenuAndDate(menu.getId(), order.getOrderDate());
 		if(dateOrderCount == null) {
-			dateOrderCount = DateOrderCount.createDateOrderCount(menu, order.getOrderDate(), order.getTotalCount());
+			dateOrderCount = DateOrderCount.createDateOrderCount(menu, order.getOrderDate(), 0);
 		}
 		dateOrderCount.addOrderCount(order.getTotalCount());
 		dateOrderCountRepository.save(dateOrderCount);

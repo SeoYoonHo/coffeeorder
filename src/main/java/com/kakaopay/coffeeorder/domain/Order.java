@@ -40,6 +40,7 @@ public class Order {
 	
 	public void addOrderMenu(OrderMenu orderMenu) {
 		orderMenuList.add(orderMenu);
+		orderMenu.setOrder(this);
 	}
 	
 	public static Order createOrder(Member member, OrderMenu... orderMenus) {
@@ -68,7 +69,7 @@ public class Order {
 	public int getTotalCount() {
 		int totalCount = 0 ;
 		for(OrderMenu orderMenu : orderMenuList) {
-			totalCount += orderMenu.getTotalPrice();
+			totalCount += orderMenu.getCount();
 		}
 		return totalCount;
 	}

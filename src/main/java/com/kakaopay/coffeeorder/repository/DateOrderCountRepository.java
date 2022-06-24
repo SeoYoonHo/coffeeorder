@@ -40,7 +40,7 @@ public class DateOrderCountRepository {
 	
 	
 	public int deleteByMenuAndDate(Long menuId, LocalDate date) {
-		int deleteCnt = em.createQuery("delete from DateOrderCount d where d.menu.id = :menuid and  d.date = :date")
+		int deleteCnt = em.createQuery("delete from DateOrderCount d where d.menu.id = :menuid and d.date = :date")
 				.setParameter("menuid", menuId)
 				.setParameter("date", date)
 				.executeUpdate();

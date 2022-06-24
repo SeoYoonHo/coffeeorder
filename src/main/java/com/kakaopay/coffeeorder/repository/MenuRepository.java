@@ -28,11 +28,5 @@ public class MenuRepository {
 		return em.createQuery("select m from Menu m", Menu.class)
 				.getResultList();
 	}
-	
-	public List<Menu> findByNames(String name){
-		return em.createQuery("select m from Menu m where m.name = :name", Menu.class)
-				.setParameter("name", name)
-				.getResultList();
-	}
 
 }
