@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrderServiceTest {
+public class OrderMenuTest {
 
 	@Test
 	public void 주문메뉴생성() {
