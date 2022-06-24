@@ -3,6 +3,7 @@ package com.kakaopay.coffeeorder.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kakaopay.coffeeorder.domain.Menu;
+import com.kakaopay.coffeeorder.exception.NoSuchException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -60,5 +62,17 @@ public class MenuRepositoryTest {
 		assertTrue(menuList.contains(menu1));
 		assertTrue(menuList.contains(menu2));
 		assertTrue(menuList.contains(menu3));
+	}
+	
+	@Test(expected = NoSuchException.class)
+	public void 없는메찾기() {
+		// given
+		Long id = (long)-1;
+
+		// when
+		menuRepository.findOne(id);
+
+		// then
+		fail("에러 나야함");		
 	}
 }

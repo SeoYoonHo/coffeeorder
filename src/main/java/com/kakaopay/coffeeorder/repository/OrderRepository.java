@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
 import com.kakaopay.coffeeorder.domain.Order;
+import com.kakaopay.coffeeorder.exception.NoSuchException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +20,11 @@ public class OrderRepository {
 	}
 	
 	public Order findOne(Long id) {
-		return em.find(Order.class, id);
+		Order order = em.find(Order.class, id);
+		if (order == null) {
+			throw new NoSuchException("해당 아이디를 가진 주문을 찾을 수 없습니다.");
+		}
+		return order;
 	}
 
 }

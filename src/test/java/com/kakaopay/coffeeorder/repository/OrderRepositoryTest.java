@@ -1,6 +1,7 @@
 package com.kakaopay.coffeeorder.repository;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.kakaopay.coffeeorder.domain.Member;
 import com.kakaopay.coffeeorder.domain.Menu;
 import com.kakaopay.coffeeorder.domain.Order;
 import com.kakaopay.coffeeorder.domain.OrderMenu;
+import com.kakaopay.coffeeorder.exception.NoSuchException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -57,5 +59,17 @@ public class OrderRepositoryTest {
 
 		// then
 		assertEquals(order, orderRepository.findOne(order.getId()));
+	}
+	
+	@Test(expected = NoSuchException.class)
+	public void 없는주문찾기() {
+		// given
+		Long id = (long)-1;
+
+		// when
+		orderRepository.findOne(id);
+
+		// then
+		fail("에러 나야함");		
 	}
 }
